@@ -1,0 +1,22 @@
+
+# File: .github/workflows/hackiai.yml
+name: Hacki AI
+on:
+  pull_request:
+    branches:
+      - main # Verify this is your main branch
+      - develop
+
+jobs:
+  trigger-code-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Trigger HackiAI code analysis
+        uses: popol-ventures/hacki-analysis-action@v0.1.0
+        with:
+          HACKI_API_KEY: ${{ secrets.HACKI_API_KEY }}
+    
